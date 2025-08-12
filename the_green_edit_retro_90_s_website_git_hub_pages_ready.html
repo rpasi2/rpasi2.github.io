@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Green Edit Landscaping</title>
+  <!-- 90s-ish pixel font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --forest: #0b3d0b;
+      --lime: #afff5d;
+      --neon: #00ffea;
+      --sun: #ffd900;
+      --cream: #fff7d6;
+      --shadow: rgba(0,0,0,.25);
+      --card: #145214;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; color:#fff; background: var(--forest);
+      font-family: 'Press Start 2P', system-ui, -apple-system, Segoe UI, Roboto, "Comic Sans MS", sans-serif;
+      image-rendering: pixelated;
+      /* Subtle retro pattern */
+      background-image:
+        radial-gradient(circle at 10px 10px, rgba(255,255,255,.06) 2px, transparent 0),
+        linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,.03));
+      background-size:20px 20px, 100% 100%;
+      letter-spacing: .5px;
+    }
+    a{ color: var(--neon); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index: 999;
+      background: linear-gradient(180deg, #0f4f0f 0%, #0b3d0b 100%);
+      border-bottom: 4px double var(--lime);
+      box-shadow: 0 6px 0 var(--shadow);
+    }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 12px 16px; position:relative; }
+
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+    .brand h1{
+      margin:0; font-size: 22px; line-height:1.2; color: var(--sun);
+      text-shadow: 2px 2px 0 #000;
+    }
+    /* Logo in the top-right */
+    .logo-spot{
+      position:absolute; right:16px; top:12px; width:84px; height:84px;
+      border:3px dashed var(--lime); border-radius:8px; background:#0c430c;
+      display:grid; place-items:center; padding:6px;
+      box-shadow: 0 4px 0 var(--shadow);
+    }
+    .logo-spot img{ max-width:100%; max-height:100%; display:block; }
+    .logo-spot .placeholder{ font-size:10px; text-align:center; color:#cfeecf; }
+
+    /* Nav */
+    nav{
+      margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .nav-btn{
+      border:3px outset var(--lime); background:#106010; color:#fff; padding:8px 12px;
+      text-transform:uppercase; font-size:12px; cursor:pointer;
+      box-shadow: 0 4px 0 #0007;
+    }
+    .nav-btn.active{ background:#1f7a1f; border-style: inset; }
+
+    /* Marquee bar (very 90s) */
+    .ticker{
+      margin-top:8px; border-top:3px double var(--lime); border-bottom:3px double var(--lime);
+      background:#0e4a0e; padding:6px 0;
+      overflow:hidden; white-space:nowrap;
+    }
+    .marquee{ display:inline-block; padding-left:100%; animation: scroll 20s linear infinite; }
+    @keyframes scroll { from{ transform: translateX(0); } to{ transform: translateX(-100%); } }
+
+    /* GIF strip */
+    .gif-strip{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:10px;
+      padding:14px 16px; max-width:1100px; margin:0 auto;
+    }
+    .gif-slot{
+      height:110px; border:3px dashed var(--neon); background:#0c430c; display:grid; place-items:center;
+      box-shadow: 0 4px 0 var(--shadow);
+      position:relative; overflow:hidden; border-radius:10px;
+    }
+    .gif-slot img{ width:100%; height:100%; object-fit:cover; image-rendering: auto; }
+    .gif-slot .slot-label{ position:absolute; inset:auto auto 6px 6px; font-size:9px; background:#000a; padding:3px 5px; border-radius:4px; }
+
+    /* Content */
+    main{ max-width:1100px; margin:0 auto; padding: 10px 16px 60px; }
+    section{
+      display:none; border:4px ridge var(--lime); background:linear-gradient(180deg,#0f4f0f,#0b3d0b);
+      padding:18px; border-radius:12px; box-shadow: 0 8px 0 var(--shadow);
+    }
+    section.active{ display:block; }
+    h2{ margin-top:0; color: var(--cream); text-shadow:1px 1px 0 #000; font-size:18px; }
+    p, li, label, input, textarea{ font-size:12px; }
+
+    /* Gallery */
+    .gallery-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:12px; }
+    .card{
+      background: var(--card); border:3px groove var(--neon); border-radius:10px; padding:8px; min-height:140px;
+      display:grid; place-items:center; text-align:center;
+    }
+    .card img{ width:100%; height:120px; object-fit:cover; border:2px solid #000; }
+    .card small{ opacity:.9; }
+
+    /* Contact */
+    form{ display:grid; gap:10px; max-width:560px; }
+    input, textarea{
+      padding:10px; border:3px inset #9ff; background:#eef; color:#111; font-family: inherit;
+    }
+    .btn{
+      width:max-content; border:3px outset #ff0; background:#ffc; padding:10px 14px; cursor:pointer; font-size:12px;
+    }
+
+    footer{ text-align:center; color:#d8ffd8; opacity:.9; padding:30px 10px; font-size:10px; }
+
+    /* Mobile tweaks */
+    @media (max-width:640px){
+      .logo-spot{ position:static; margin-left:auto; }
+      .brand{ justify-content:space-between; }
+      .gif-strip{ grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div style="display:grid; gap:6px">
+          <h1>The Green Edit</h1>
+          <nav aria-label="Primary">
+            <button class="nav-btn active" data-target="home">Home</button>
+            <button class="nav-btn" data-target="gallery">Gallery</button>
+            <button class="nav-btn" data-target="contact">Contact</button>
+          </nav>
+        </div>
+        <div class="logo-spot" title="Company logo placeholder (top-right)">
+          <!-- Replace src below with your logo path (e.g., assets/logo.png) -->
+          <img id="companyLogo" src="" alt="Company Logo" style="display:none;" />
+          <div class="placeholder">Logo goes here</div>
+        </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="marquee">🌲 Welcome to The Green Edit • Retro web vibes • Click the tabs above • Placeholders everywhere so you can plug in your own text and images • 🌿✨</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Four GIF placeholders (drop your GIFs by updating the src attributes below) -->
+  <div class="gif-strip">
+    <!-- Replace src values with your GIF URLs/paths: assets/gif1.gif ... assets/gif4.gif -->
+    <div class="gif-slot">
+      <img id="gif1" src="" alt="GIF 1" style="display:none;" />
+      <span class="slot-label">GIF 1</span>
+    </div>
+    <div class="gif-slot">
+      <img id="gif2" src="" alt="GIF 2" style="display:none;" />
+      <span class="slot-label">GIF 2</span>
+    </div>
+    <div class="gif-slot">
+      <img id="gif3" src="" alt="GIF 3" style="display:none;" />
+      <span class="slot-label">GIF 3</span>
+    </div>
+    <div class="gif-slot">
+      <img id="gif4" src="" alt="GIF 4" style="display:none;" />
+      <span class="slot-label">GIF 4</span>
+    </div>
+  </div>
+
+  <main>
+    <section id="home" class="active">
+      <h2>Home</h2>
+      <p>[Write your welcome message here. Quick blurb about your landscaping services, service areas, and what makes you different.]</p>
+      <p>[Add a short list of highlights or a retro "Under Construction" note if you like the 90s vibe.]</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p>[Drop before/after shots, lawns, hardscapes, garden beds, etc.]</p>
+      <div class="gallery-grid">
+        <!-- Replace the placeholders below with your image paths or keep them as is until you upload -->
+        <div class="card"><small>Image 1</small></div>
+        <div class="card"><small>Image 2</small></div>
+        <div class="card"><small>Image 3</small></div>
+        <div class="card"><small>Image 4</small></div>
+        <div class="card"><small>Image 5</small></div>
+        <div class="card"><small>Image 6</small></div>
+        <div class="card"><small>Image 7</small></div>
+        <div class="card"><small>Image 8</small></div>
+        <div class="card"><small>Image 9</small></div>
+        <div class="card"><small>Image 10</small></div>
+        <div class="card"><small>Image 11</small></div>
+        <div class="card"><small>Image 12</small></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>[Put your phone, email, service hours, and a short contact note here.]</p>
+      <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with your own handling or use a mailto link.');">
+        <label>
+          Name
+          <input type="text" placeholder="Your name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          Message
+          <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+        </label>
+        <!-- For static GitHub Pages, consider replacing the button with a mailto link below -->
+        <button class="btn" type="submit">Send (placeholder)</button>
+        <div style="margin-top:6px; font-size:11px;">
+          Or email us: <a href="mailto:hello@thegreenedit.net">hello@thegreenedit.net</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> The Green Edit • All rights reserved
+  </footer>
+
+  <script>
+    // Simple tab navigation
+    const buttons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('main section');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const id = btn.dataset.target;
+      sections.forEach(s => s.classList.toggle('active', s.id === id));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Helper: if you set a src for logo or GIFs, show the image & hide the label
+    function wireImage(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const container = el.closest('.gif-slot') || el.closest('.logo-spot');
+      const label = container?.querySelector('.placeholder, .slot-label');
+      const reveal = () => {
+        if(el.getAttribute('src')){
+          el.style.display = 'block';
+          if(label) label.style.display = 'none';
+        }
+      }
+      el.addEventListener('load', reveal);
+      reveal();
+    }
+
+    // === Replace these paths with your actual assets once uploaded ===
+    // Example (uncomment and set your paths):
+    // document.getElementById('companyLogo').src = 'assets/green-edit-logo.png';
+    // document.getElementById('gif1').src = 'assets/gif1.gif';
+    // document.getElementById('gif2').src = 'assets/gif2.gif';
+    // document.getElementById('gif3').src = 'assets/gif3.gif';
+    // document.getElementById('gif4').src = 'assets/gif4.gif';
+
+    // Wire up reveal behavior (works after you set the src)
+    ['companyLogo','gif1','gif2','gif3','gif4'].forEach(wireImage);
+  </script>
+</body>
+</html>
