@@ -13,9 +13,9 @@
     :root{
       --bg: #ffffff;
       --text: #0f172a;
-      --muted: #f7fff7;               /* soft green-white */
+      --muted: #f7fff7;
       --line: #dfe9df;
-      --accent: #1b5e20;              /* contractor deep green */
+      --accent: #1b5e20;
       --accent-light: #e9f7e9;
       --maxw: 1080px;
       --radius: 14px;
@@ -35,23 +35,27 @@
     /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,0.9);
+      background:rgba(255,255,255,0.95);
       backdrop-filter:blur(6px);
       border-bottom:1px solid var(--line);
+      padding-bottom:8px;
     }
     .brand-row{ display:flex; align-items:center; justify-content:space-between; }
     .brand-left{ display:flex; align-items:center; gap:14px; }
     .logo-spot{
-      width:64px; height:64px; border-radius:10px; overflow:hidden;
+      width:64px; height:64px; border-radius:10px;
       display:grid; place-items:center;
-      background:var(--accent-light); border:1px solid var(--line);
+      background:var(--accent-light);
+      border:1px solid var(--line);
+      overflow:hidden;
     }
     h1{ margin:0; font-size:22px; font-weight:700; color:var(--accent); }
 
     nav{ display:flex; gap:8px; }
     .nav-btn{
-      padding:10px 14px; border-radius:10px; cursor:pointer; border:none;
-      font-weight:600; background:transparent; color:var(--text);
+      padding:10px 14px; border-radius:10px; cursor:pointer;
+      border:none; background:transparent; font-weight:600;
+      color:var(--text);
     }
     .nav-btn:hover{ background:var(--accent-light); }
     .nav-btn.active{
@@ -59,30 +63,15 @@
       color:var(--accent);
     }
 
-    /* GIF strip */
-    .gif-strip{
-      display:grid; grid-template-columns:repeat(4,1fr);
-      gap:12px; margin:14px 0;
-    }
-    .gif-slot{
-      height:120px; background:var(--accent-light);
-      border:1px solid var(--line); border-radius:var(--radius);
-      display:grid; place-items:center; position:relative; overflow:hidden;
-    }
-    .slot-label{
-      position:absolute; bottom:10px; left:10px; font-size:12px; color:#616161;
-    }
-    img{ display:none; }
-
     /* Main */
     main{ padding:24px 20px 60px; }
     section{ display:none; }
     section.active{ display:block; }
     h2{ margin-top:0; color:var(--accent); font-size:26px; }
 
-    /* Contractor-style Hero */
+    /* Hero */
     .hero-box{
-      padding:40px 28px; 
+      padding:40px 28px;
       background:var(--muted);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -98,8 +87,8 @@
     }
     .cta-btn{
       display:inline-block; padding:14px 26px;
-      background:var(--accent); color:white;
-      border-radius:8px; font-weight:600; text-decoration:none;
+      background:var(--accent); color:white; border-radius:8px;
+      font-weight:600;
     }
     .cta-btn:hover{ filter:brightness(0.95); }
 
@@ -151,11 +140,6 @@
       border-top:1px solid var(--line); padding:28px 20px;
       text-align:center; color:#6b7280;
     }
-
-    /* Responsive */
-    @media (max-width:760px){
-      .gif-strip{ grid-template-columns:repeat(2,1fr); }
-    }
   </style>
 </head>
 
@@ -165,24 +149,16 @@
     <div class="wrap brand-row">
       <div class="brand-left">
         <div class="logo-spot">
-          <img id="companyLogo" src="" alt="Company Logo" />
+          <img id="companyLogo" src="" alt="Company Logo">
         </div>
         <h1>The Green Edit</h1>
       </div>
+
       <nav>
         <button class="nav-btn active" data-target="home">Home</button>
         <button class="nav-btn" data-target="gallery">Gallery</button>
         <button class="nav-btn" data-target="contact">Contact</button>
       </nav>
-    </div>
-
-    <div class="wrap">
-      <div class="gif-strip">
-        <div class="gif-slot"><img id="gif1" src="" /><span class="slot-label">GIF 1</span></div>
-        <div class="gif-slot"><img id="gif2" src="" /><span class="slot-label">GIF 2</span></div>
-        <div class="gif-slot"><img id="gif3" src="" /><span class="slot-label">GIF 3</span></div>
-        <div class="gif-slot"><img id="gif4" src="" /><span class="slot-label">GIF 4</span></div>
-      </div>
     </div>
   </header>
 
@@ -191,6 +167,7 @@
 
     <!-- HOME -->
     <section id="home" class="active">
+
       <div class="hero-box">
         <div class="hero-title">Professional Landscaping & Yard Care</div>
         <p class="hero-sub">
@@ -243,8 +220,8 @@
       <p>We typically respond within 24 hours.</p>
 
       <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with your own handling.');">
-        <label>Name<input type="text" placeholder="Your name" required /></label>
-        <label>Email<input type="email" placeholder="you@example.com" required /></label>
+        <label>Name<input type="text" placeholder="Your name" required></label>
+        <label>Email<input type="email" placeholder="you@example.com" required></label>
         <label>Message<textarea rows="5" placeholder="Tell us about your project..."></textarea></label>
         <button class="btn" type="submit">Send Message</button>
 
@@ -270,27 +247,16 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }));
 
-    // Year
     document.getElementById('year').textContent=new Date().getFullYear();
 
+    // Logo reveal
     function wireImage(id){
       const el=document.getElementById(id);
       if(!el) return;
-      const container=el.closest('.gif-slot') || el.closest('.logo-spot');
-      const label=container?.querySelector('.slot-label') || container?.querySelector('.placeholder');
-      const reveal=()=>{
-        if(el.getAttribute('src')){
-          el.style.display='block';
-          if(label) label.style.display='none';
-        }
-      };
-      el.addEventListener('load',reveal);
-      reveal();
+      if(el.getAttribute('src')) el.style.display='block';
     }
-
     document.getElementById('companyLogo').src='logo.png';
-    ['companyLogo','gif1','gif2','gif3','gif4'].forEach(wireImage);
+    wireImage('companyLogo');
   </script>
 </body>
 </html>
-
