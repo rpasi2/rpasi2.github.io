@@ -13,10 +13,10 @@
     :root{
       --bg:#ffffff;
       --text:#0f172a;
-      --muted:#f4f8ff;          /* soft winter blue */
-      --line:#d7e4f7;           /* icy border */
-      --accent:#1d4ed8;         /* strong winter blue */
-      --accent-light:#e6efff;   /* light blue tint */
+      --muted:#f4f8ff;
+      --line:#d7e4f7;
+      --accent:#1d4ed8;
+      --accent-light:#e6efff;
       --maxw:1080px;
       --radius:14px;
     }
@@ -140,19 +140,17 @@
       text-align:center; color:#6b7280;
     }
 
-    html {
-      scroll-behavior:smooth;
-    }
+    html { scroll-behavior:smooth; }
+
   </style>
 </head>
 
 <body>
+
 <header>
   <div class="wrap brand-row">
     <div class="brand-left">
-      <div class="logo-spot">
-        <img id="companyLogo" src="logo.png" alt="Logo">
-      </div>
+      <div class="logo-spot"><img id="companyLogo" src="logo.png" alt="Logo"></div>
       <h1>The Green Edit</h1>
     </div>
 
@@ -173,10 +171,7 @@
       <p class="hero-sub">
         Dependable winter services: sidewalk clearing, driveway snow removal, salting, de-icing, gutter cleaning, and seasonal yard cleanup.
       </p>
-      <a class="cta-btn" href="#" onclick="
-        document.querySelector('[data-target=contact]').click();
-        return false;
-      ">Get a Free Winter Quote</a>
+      <a class="cta-btn" href="mailto:getgreenedit@gmail.com">Get a Free Winter Quote</a>
     </div>
 
     <div class="services-grid">
@@ -242,10 +237,10 @@
     <h2>Contact</h2>
     <p>Fast responses — especially during storms.</p>
 
-    <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with real handling.');">
-      <label>Name<input type="text" placeholder="Your name" required></label>
-      <label>Email<input type="email" placeholder="you@example.com" required></label>
-      <label>Message<textarea rows="5" placeholder="Tell us your winter service needs..."></textarea></label>
+    <form action="mailto:getgreenedit@gmail.com" method="POST" enctype="text/plain">
+      <label>Name<input type="text" name="Name" required></label>
+      <label>Email<input type="email" name="Email" required></label>
+      <label>Message<textarea rows="5" name="Message"></textarea></label>
       <button class="btn" type="submit">Send Message</button>
 
       <div style="margin-top:6px;">
