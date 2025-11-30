@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Green Edit Landscaping</title>
+  <title>The Green Edit Winter Services</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,25 +11,24 @@
 
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #f7fff7;
-      --line: #dfe9df;
-      --accent: #1b5e20;
-      --accent-light: #e9f7e9;
-      --maxw: 1080px;
-      --radius: 14px;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#f4faf4;
+      --line:#dfe9df;
+      --accent:#0d4d1b;          /* darker winter green */
+      --accent-light:#e5f6e5;
+      --radius:14px;
+      --maxw:1080px;
     }
 
     *{ box-sizing:border-box; }
     body{
       margin:0; background:var(--bg); color:var(--text);
-      font-family:'Inter',sans-serif;
-      line-height:1.6;
+      font-family:'Inter',sans-serif; line-height:1.6;
     }
-
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
+
     .wrap{ max-width:var(--maxw); margin:0 auto; padding:16px 20px; }
 
     /* Header */
@@ -54,13 +53,11 @@
     nav{ display:flex; gap:8px; }
     .nav-btn{
       padding:10px 14px; border-radius:10px; cursor:pointer;
-      border:none; background:transparent; font-weight:600;
-      color:var(--text);
+      border:none; background:transparent; font-weight:600; color:var(--text);
     }
     .nav-btn:hover{ background:var(--accent-light); }
     .nav-btn.active{
-      background:var(--accent-light);
-      color:var(--accent);
+      background:var(--accent-light); color:var(--accent);
     }
 
     /* Main */
@@ -69,7 +66,7 @@
     section.active{ display:block; }
     h2{ margin-top:0; color:var(--accent); font-size:26px; }
 
-    /* Hero */
+    /* Winter Hero */
     .hero-box{
       padding:40px 28px;
       background:var(--muted);
@@ -86,16 +83,14 @@
       color:#3a3a3a; margin-bottom:20px;
     }
     .cta-btn{
-      display:inline-block; padding:14px 26px;
-      background:var(--accent); color:white; border-radius:8px;
-      font-weight:600;
+      display:inline-block; padding:14px 26px; background:var(--accent);
+      color:white; border-radius:8px; font-weight:600;
     }
     .cta-btn:hover{ filter:brightness(0.95); }
 
-    /* Services */
+    /* Winter Services */
     .services-grid{
-      display:flex; flex-wrap:wrap; gap:20px;
-      justify-content:center;
+      display:flex; flex-wrap:wrap; gap:20px; justify-content:center;
     }
     .svc-card{
       width:300px; padding:22px; border-radius:12px;
@@ -103,7 +98,7 @@
       box-shadow:0 2px 4px rgba(0,0,0,0.04);
     }
     .svc-card h3{
-      color:var(--accent); margin-top:0; font-size:22px; margin-bottom:6px;
+      color:var(--accent); margin-top:0; font-size:22px; margin-bottom:8px;
     }
 
     /* Gallery */
@@ -131,8 +126,8 @@
     textarea{ resize:vertical; }
     .btn{
       background:var(--accent); border:1px solid var(--accent);
-      padding:10px 14px; border-radius:10px; color:white; font-weight:600;
-      cursor:pointer;
+      padding:10px 14px; border-radius:10px; color:white;
+      font-weight:600; cursor:pointer;
     }
     .btn:hover{ filter:brightness(0.96); }
 
@@ -144,119 +139,130 @@
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="wrap brand-row">
-      <div class="brand-left">
-        <div class="logo-spot">
-          <img id="companyLogo" src="" alt="Company Logo">
-        </div>
-        <h1>The Green Edit</h1>
+<header>
+  <div class="wrap brand-row">
+    <div class="brand-left">
+      <div class="logo-spot">
+        <img id="companyLogo" src="logo.png" alt="Company Logo">
       </div>
-
-      <nav>
-        <button class="nav-btn active" data-target="home">Home</button>
-        <button class="nav-btn" data-target="gallery">Gallery</button>
-        <button class="nav-btn" data-target="contact">Contact</button>
-      </nav>
+      <h1>The Green Edit</h1>
     </div>
-  </header>
 
-  <!-- MAIN -->
-  <main class="wrap">
+    <nav>
+      <button class="nav-btn active" data-target="home">Home</button>
+      <button class="nav-btn" data-target="gallery">Gallery</button>
+      <button class="nav-btn" data-target="contact">Contact</button>
+    </nav>
+  </div>
+</header>
 
-    <!-- HOME -->
-    <section id="home" class="active">
+<main class="wrap">
 
-      <div class="hero-box">
-        <div class="hero-title">Professional Landscaping & Yard Care</div>
-        <p class="hero-sub">
-          From clean-ups to mulch beds and full lawn refreshes — we help homeowners upgrade their outdoor spaces with quality, reliability, and attention to detail.
-        </p>
-        <a class="cta-btn" href="#contact">Get a Free Quote</a>
+  <!-- HOME (WINTER VERSION) -->
+  <section id="home" class="active">
+    <div class="hero-box">
+      <div class="hero-title">Winter Cleanup, Snow Removal & Ice Control</div>
+      <p class="hero-sub">
+        Reliable winter services for homeowners: snow clearing, sidewalk ice control, winter debris removal, gutter cleaning, and seasonal yard protection.
+      </p>
+      <a class="cta-btn" href="#" onclick="
+        document.querySelector('[data-target=contact]').click();
+        return false;
+      ">Get a Free Winter Quote</a>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <h3>Snow Shoveling & Walkway Clearing</h3>
+        <p>Fast and thorough removal of snow from sidewalks, driveways, pathways, and entrances.</p>
       </div>
 
-      <div class="services-grid">
-        <div class="svc-card">
-          <h3>Yard Clean-Ups</h3>
-          <p>Leaf removal, brush clearing, debris haul-away, and seasonal maintenance.</p>
-        </div>
-
-        <div class="svc-card">
-          <h3>Mulch & Rock Beds</h3>
-          <p>Fresh mulch, stone installation, edging, and decorative bed restoration.</p>
-        </div>
-
-        <div class="svc-card">
-          <h3>Shrub Trimming</h3>
-          <p>Pruning, shaping, and full maintenance for healthy, clean landscapes.</p>
-        </div>
-
-        <div class="svc-card">
-          <h3>Sod Installation</h3>
-          <p>Instant green lawns with professional-grade prep and installation.</p>
-        </div>
+      <div class="svc-card">
+        <h3>Salting & Ice Melt Application</h3>
+        <p>Professional ice control to prevent slips—calcium chloride, pet-safe salts, and walkway treatments.</p>
       </div>
-    </section>
 
-    <!-- GALLERY -->
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <p>Before/after transformations, lawn installs, clean-up projects, and more.</p>
-
-      <div class="gallery-grid">
-        <div class="card"><div class="ph"></div><small>Image 1</small></div>
-        <div class="card"><div class="ph"></div><small>Image 2</small></div>
-        <div class="card"><div class="ph"></div><small>Image 3</small></div>
-        <div class="card"><div class="ph"></div><small>Image 4</small></div>
-        <div class="card"><div class="ph"></div><small>Image 5</small></div>
-        <div class="card"><div class="ph"></div><small>Image 6</small></div>
+      <div class="svc-card">
+        <h3>Driveway Snow Clearing</h3>
+        <p>Shoveling or snowblower service for residential driveways, alleys, and parking pads.</p>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>We typically respond within 24 hours.</p>
+      <div class="svc-card">
+        <h3>Frozen Sidewalk Defrosting</h3>
+        <p>Hot water + melt application for thick ice layers that standard salt won't remove.</p>
+      </div>
 
-      <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with your own handling.');">
-        <label>Name<input type="text" placeholder="Your name" required></label>
-        <label>Email<input type="email" placeholder="you@example.com" required></label>
-        <label>Message<textarea rows="5" placeholder="Tell us about your project..."></textarea></label>
-        <button class="btn" type="submit">Send Message</button>
+      <div class="svc-card">
+        <h3>Winter Yard Clean-Up</h3>
+        <p>Removal of late leaves, branches, debris, trash, and storm damage before heavy snow builds up.</p>
+      </div>
 
-        <div style="margin-top:6px;">
-          Or email us directly: <a href="mailto:getgreenedit@gmail.com">getgreenedit@gmail.com</a>
-        </div>
-      </form>
-    </section>
+      <div class="svc-card">
+        <h3>Gutter & Downspout Cleaning</h3>
+        <p>Clearing leaves and blockages to prevent ice dams and roof drainage issues.</p>
+      </div>
 
-  </main>
+      <div class="svc-card">
+        <h3>Storm Branch Removal</h3>
+        <p>Cutting and hauling fallen limbs caused by snow/ice storms. Safety-focused cleanup.</p>
+      </div>
 
-  <footer>© <span id="year"></span> The Green Edit • All rights reserved</footer>
+      <div class="svc-card">
+        <h3>Winter Mulch / Root Protection</h3>
+        <p>Mulch installation to protect plant roots from freeze–thaw cycles and winter drying.</p>
+      </div>
 
-  <script>
-    // Nav toggle
-    const buttons=document.querySelectorAll('.nav-btn');
-    const sections=document.querySelectorAll('main section');
-    buttons.forEach(btn=>btn.addEventListener('click',()=>{
-      buttons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const id=btn.dataset.target;
-      sections.forEach(s=>s.classList.toggle('active',s.id===id));
-      window.scrollTo({top:0,behavior:'smooth'});
-    }));
+    </div>
+  </section>
 
-    document.getElementById('year').textContent=new Date().getFullYear();
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2>Winter Gallery</h2>
+    <p>Before/after winter cleanups, snow removal, branch clearing, and more.</p>
 
-    // Logo reveal
-    function wireImage(id){
-      const el=document.getElementById(id);
-      if(!el) return;
-      if(el.getAttribute('src')) el.style.display='block';
-    }
-    document.getElementById('companyLogo').src='logo.png';
-    wireImage('companyLogo');
-  </script>
+    <div class="gallery-grid">
+      <div class="card"><div class="ph"></div><small>Winter Job 1</small></div>
+      <div class="card"><div class="ph"></div><small>Winter Job 2</small></div>
+      <div class="card"><div class="ph"></div><small>Winter Job 3</small></div>
+      <div class="card"><div class="ph"></div><small>Winter Job 4</small></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>We respond quickly—especially during storms.</p>
+
+    <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with your own handling.');">
+      <label>Name<input type="text" placeholder="Your name" required></label>
+      <label>Email<input type="email" placeholder="you@example.com" required></label>
+      <label>Message<textarea rows="5" placeholder="Tell us what winter service you need..."></textarea></label>
+      <button class="btn" type="submit">Send Message</button>
+
+      <div style="margin-top:6px;">
+        Or email us directly: <a href="mailto:getgreenedit@gmail.com">getgreenedit@gmail.com</a>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<footer>© <span id="year"></span> The Green Edit • Winter Services • All rights reserved</footer>
+
+<script>
+  // Nav toggle
+  const buttons=document.querySelectorAll('.nav-btn');
+  const sections=document.querySelectorAll('main section');
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{
+    buttons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const id=btn.dataset.target;
+    sections.forEach(s=>s.classList.toggle('active',s.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
