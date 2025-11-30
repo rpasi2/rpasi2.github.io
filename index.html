@@ -13,12 +13,12 @@
     :root{
       --bg:#ffffff;
       --text:#0f172a;
-      --muted:#f4faf4;
-      --line:#dfe9df;
-      --accent:#0d4d1b;          /* darker winter green */
-      --accent-light:#e5f6e5;
-      --radius:14px;
+      --muted:#f4f8ff;          /* soft winter blue */
+      --line:#d7e4f7;           /* icy border */
+      --accent:#1d4ed8;         /* strong winter blue */
+      --accent-light:#e6efff;   /* light blue tint */
       --maxw:1080px;
+      --radius:14px;
     }
 
     *{ box-sizing:border-box; }
@@ -34,7 +34,7 @@
     /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,0.95);
+      background:rgba(255,255,255,0.96);
       backdrop-filter:blur(6px);
       border-bottom:1px solid var(--line);
       padding-bottom:8px;
@@ -66,7 +66,7 @@
     section.active{ display:block; }
     h2{ margin-top:0; color:var(--accent); font-size:26px; }
 
-    /* Winter Hero */
+    /* Hero */
     .hero-box{
       padding:40px 28px;
       background:var(--muted);
@@ -88,7 +88,7 @@
     }
     .cta-btn:hover{ filter:brightness(0.95); }
 
-    /* Winter Services */
+    /* Services */
     .services-grid{
       display:flex; flex-wrap:wrap; gap:20px; justify-content:center;
     }
@@ -98,7 +98,8 @@
       box-shadow:0 2px 4px rgba(0,0,0,0.04);
     }
     .svc-card h3{
-      color:var(--accent); margin-top:0; font-size:22px; margin-bottom:8px;
+      color:var(--accent); margin-top:0;
+      font-size:22px; margin-bottom:8px;
     }
 
     /* Gallery */
@@ -108,12 +109,13 @@
     }
     .card{
       background:var(--accent-light); border:1px solid var(--line);
-      border-radius:10px; min-height:140px; display:grid; place-items:center;
-      text-align:center; padding:10px;
+      border-radius:10px; min-height:140px; display:grid;
+      place-items:center; text-align:center; padding:10px;
     }
     .card .ph{
-      width:100%; height:110px; border-radius:8px; border:1px dashed #b7ccb7;
-      background:linear-gradient(180deg,#fafcfa,#f4f7f4);
+      width:100%; height:110px; border-radius:8px;
+      border:1px dashed #9db3d9;
+      background:linear-gradient(180deg,#f3f8ff,#edf4ff);
     }
     small{ color:#6b7280; }
 
@@ -121,19 +123,25 @@
     form{ display:grid; gap:12px; max-width:560px; }
     input, textarea{
       width:100%; padding:12px 14px; border-radius:10px;
-      border:1px solid var(--line); background:#fff; font:inherit;
+      border:1px solid var(--line); font:inherit; background:white;
     }
     textarea{ resize:vertical; }
+
     .btn{
       background:var(--accent); border:1px solid var(--accent);
-      padding:10px 14px; border-radius:10px; color:white;
-      font-weight:600; cursor:pointer;
+      padding:10px 14px; border-radius:10px; color:white; font-weight:600;
+      cursor:pointer;
     }
     .btn:hover{ filter:brightness(0.96); }
 
     footer{
-      border-top:1px solid var(--line); padding:28px 20px;
+      border-top:1px solid var(--line);
+      padding:28px 20px;
       text-align:center; color:#6b7280;
+    }
+
+    html {
+      scroll-behavior:smooth;
     }
   </style>
 </head>
@@ -143,7 +151,7 @@
   <div class="wrap brand-row">
     <div class="brand-left">
       <div class="logo-spot">
-        <img id="companyLogo" src="logo.png" alt="Company Logo">
+        <img id="companyLogo" src="logo.png" alt="Logo">
       </div>
       <h1>The Green Edit</h1>
     </div>
@@ -158,12 +166,12 @@
 
 <main class="wrap">
 
-  <!-- HOME (WINTER VERSION) -->
+  <!-- HOME -->
   <section id="home" class="active">
     <div class="hero-box">
-      <div class="hero-title">Winter Cleanup, Snow Removal & Ice Control</div>
+      <div class="hero-title">Winter Cleanups, Snow Removal & Ice Control</div>
       <p class="hero-sub">
-        Reliable winter services for homeowners: snow clearing, sidewalk ice control, winter debris removal, gutter cleaning, and seasonal yard protection.
+        Dependable winter services: sidewalk clearing, driveway snow removal, salting, de-icing, gutter cleaning, and seasonal yard cleanup.
       </p>
       <a class="cta-btn" href="#" onclick="
         document.querySelector('[data-target=contact]').click();
@@ -174,43 +182,43 @@
     <div class="services-grid">
 
       <div class="svc-card">
-        <h3>Snow Shoveling & Walkway Clearing</h3>
-        <p>Fast and thorough removal of snow from sidewalks, driveways, pathways, and entrances.</p>
-      </div>
-
-      <div class="svc-card">
-        <h3>Salting & Ice Melt Application</h3>
-        <p>Professional ice control to prevent slips—calcium chloride, pet-safe salts, and walkway treatments.</p>
+        <h3>Sidewalk Snow Removal</h3>
+        <p>Clearing snow from sidewalks, walkways, porches, and entry paths.</p>
       </div>
 
       <div class="svc-card">
         <h3>Driveway Snow Clearing</h3>
-        <p>Shoveling or snowblower service for residential driveways, alleys, and parking pads.</p>
+        <p>Shoveling and snowblower service for single homes, alleys, and parking pads.</p>
+      </div>
+
+      <div class="svc-card">
+        <h3>Salting & Ice Melt</h3>
+        <p>Ice control using calcium chloride, rock salt, or pet-safe melt products.</p>
       </div>
 
       <div class="svc-card">
         <h3>Frozen Sidewalk Defrosting</h3>
-        <p>Hot water + melt application for thick ice layers that standard salt won't remove.</p>
+        <p>Hot-water and melt application for thick ice layers standard salt cannot break.</p>
       </div>
 
       <div class="svc-card">
         <h3>Winter Yard Clean-Up</h3>
-        <p>Removal of late leaves, branches, debris, trash, and storm damage before heavy snow builds up.</p>
+        <p>Late leaf removal, stick pickup, debris clearing, and storm cleanup.</p>
       </div>
 
       <div class="svc-card">
-        <h3>Gutter & Downspout Cleaning</h3>
-        <p>Clearing leaves and blockages to prevent ice dams and roof drainage issues.</p>
+        <h3>Gutter Cleaning</h3>
+        <p>Clearing gutters before snow/ice to prevent blockages and ice dams.</p>
       </div>
 
       <div class="svc-card">
         <h3>Storm Branch Removal</h3>
-        <p>Cutting and hauling fallen limbs caused by snow/ice storms. Safety-focused cleanup.</p>
+        <p>Disposal of fallen or dangerous branches caused by winter storms.</p>
       </div>
 
       <div class="svc-card">
-        <h3>Winter Mulch / Root Protection</h3>
-        <p>Mulch installation to protect plant roots from freeze–thaw cycles and winter drying.</p>
+        <h3>Winter Mulch Protection</h3>
+        <p>Mulching sensitive plants to protect roots from freeze/thaw cycles.</p>
       </div>
 
     </div>
@@ -219,7 +227,7 @@
   <!-- GALLERY -->
   <section id="gallery">
     <h2>Winter Gallery</h2>
-    <p>Before/after winter cleanups, snow removal, branch clearing, and more.</p>
+    <p>Snow removal, ice control, and winter cleanup work.</p>
 
     <div class="gallery-grid">
       <div class="card"><div class="ph"></div><small>Winter Job 1</small></div>
@@ -232,12 +240,12 @@
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>We respond quickly—especially during storms.</p>
+    <p>Fast responses — especially during storms.</p>
 
-    <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with your own handling.');">
+    <form onsubmit="event.preventDefault(); alert('This is a placeholder. Replace with real handling.');">
       <label>Name<input type="text" placeholder="Your name" required></label>
       <label>Email<input type="email" placeholder="you@example.com" required></label>
-      <label>Message<textarea rows="5" placeholder="Tell us what winter service you need..."></textarea></label>
+      <label>Message<textarea rows="5" placeholder="Tell us your winter service needs..."></textarea></label>
       <button class="btn" type="submit">Send Message</button>
 
       <div style="margin-top:6px;">
@@ -251,7 +259,7 @@
 <footer>© <span id="year"></span> The Green Edit • Winter Services • All rights reserved</footer>
 
 <script>
-  // Nav toggle
+  // Navigation system
   const buttons=document.querySelectorAll('.nav-btn');
   const sections=document.querySelectorAll('main section');
   buttons.forEach(btn=>btn.addEventListener('click',()=>{
